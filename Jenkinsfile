@@ -27,7 +27,7 @@ pipeline {
           def htmlDiff = publisher.getHtmlDiff()
           writeFile file: "deploy-diff-${env.BUILD_NUMBER}.html", text: htmlDiff
         }
-        slackSend(message: "${env.JOB_NAME} #${env.BUILD_NUMBER}(<${env.BUILD_URL}/last-changes|Check Last changed>)" 
+        slackSend(message: "${env.JOB_NAME} #${env.BUILD_NUMBER} ${env.BUILD_URL}" //(<${env.BUILD_URL}/last-changes|Check Last changed>)" 
         , color: 'good', tokenCredentialId: 'slack-key')             
       }
     }
